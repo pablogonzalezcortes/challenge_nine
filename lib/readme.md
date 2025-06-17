@@ -49,45 +49,72 @@ _Also design the interface of each class in more detail._
 class TyreReading:
 
     def __init__(self, pressure, tread_depth, date):
-        pass # No code here yet
+        self._pressure = None
+        self._tread_depth = None
+        self._date = None
 
+
+    # FYI
     def __repr__(self):
-    #return f"...
+        return  f"{self.date()} - Pressure: {self.pressure} bar - Tread depth: {self._tread_depth} mm"
 
 class Tyre:
     
     def __init__(self, position):
         # self.position = position 
-        #self.readings = []
-        
+        # self.readings = [] <---- use to get the last element, which should be the latest reading
+        # self.tyre_reading = TyreReading()
 
-    def search_by_title(self, keyword):
-        # Parameters:
-        #   keyword: string
+    def add_reading(self, pressure, tread_depth):
+        # Side effects:
+        #   Updates instance of TyreReading with the passed arguments
         # Returns:
-        #   A list of the Track objects that have titles that include the keyword
-        pass # No code here yet
+        #   None
+
+    def get_reading_history(self):
+        # Returns:
+        #   all the tyre_records in self.readings
+        #   return self.readings
+
+    def latest_reading(self):
+        # Returns:
+        #   the latest reading in self.readings ([-1])
 
 
-class Track:
+class Car:
     # User-facing properties:
     #   title: string
     #   artist: string
 
-    def __init__(self, title, artist):
+    def __init__(self):
         # Parameters:
-        #   title: string
-        #   artist: string
-        # Side-effects:
-        #   Sets the title and artist properties
+        self._tyres = []
+
+    def add_tyre(self, position):
+        # Returns:
+        #   None
+        # Side effect:
+        #   Adds tyre to self._tyres
         pass # No code here yet
 
-    def format(self):
+    def get_tyre(self, position):
         # Returns:
-        #   A string of the form "TITLE by ARTIST"
+            #   Returns requested tyre
+        # Side effect:
+            #   None
+        pass # No code here yet
+
+    def get_summary(self):
+        # Returns:
+            #   Returns list with all the tyre records
+            #   If no tyre records, returns error message
+        # Side effect:
+            #   None
         pass # No code here yet
 
 ```
+![diagram](../challenge_nine.png)
+
 
 ## 3. Create Examples as Integration Tests
 
@@ -98,17 +125,12 @@ combinations that reflect the ways in which the system will be used._
 # EXAMPLE
 
 """
-Given a library
+Given a TyreReading
 When we add two tracks
 We see those tracks reflected in the tracks list
 """
-library = MusicLibrary()
-track_1 = Track("Carte Blanche", "Veracocha")
-track_2 = Track("Synaesthesia", "The Thrillseekers")
-library.add(track_1)
-library.add(track_2)
-library.tracks # => [track_1, track_2]
-```
+
+
 
 ## 4. Create Examples as Unit Tests
 
