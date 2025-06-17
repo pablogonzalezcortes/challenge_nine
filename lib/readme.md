@@ -65,9 +65,10 @@ class Tyre:
         # self.readings = [] <---- use to get the last element, which should be the latest reading
         # self.tyre_reading = TyreReading()
 
-    def add_reading(self, pressure, tread_depth):
+    def add_reading(self, pressure, tread_depth, reading_date):
         # Side effects:
         #   Updates instance of TyreReading with the passed arguments
+        # Logic: validating that reading_date is in the right format
         # Returns:
         #   None
 
